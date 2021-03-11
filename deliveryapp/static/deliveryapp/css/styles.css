@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #1abc9c;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #1abc9c;
+  --secondary: #2c3e50;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 1000px;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #DCE1E3;
+}
+
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+a {
+  color: #1abc9c;
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover {
+  color: #117964;
+  text-decoration: underline;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+button {
+  border-radius: 0;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+[role=button] {
+  cursor: pointer;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+.topdiv{
+  width: 100%;
+  height: 150px;
+  background-color: #eff8ff;
+}
+
+.top {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
+  color: #111d5e;
+}
+
+.container-fluid {
+  margin-right: auto;
+}
+
+.navigate {
+  background-color: 	orange;
+}
+
+.btn-outline-secondary{
+  width: 100%;
+}
+
+.nav-link {
+  color: white;
+}
+
+.exchange {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 100px;
+}
+
+.exchange-left,.exchange-right{
+  display: inline;
+}
+
+.right-content {
+  display: block;
+  width: 80%;
+  float: right;
+  height: 700px;
+}
+
+.options {
+  display: block;
+  float: left;
+  padding: 0;
+  width: 20%;
+  height: 700px;
+  background-color: #eff8ff;
+}
+
+.carousel-item {
+  background-color: black;
+  height: 700px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.btn{
+  display: block;
+}
+
+
+.carousel-item img{
+  position: absolute;
+  object-fit:cover;
+  top: 0;
+  left: 0;
+  min-height: 700px;
+}
+
+.footer{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: block;
+  background-color: orange;
+}
+
+.btn{
+  border-color: black;
+  color: white;
+  background-color: orange !important;
+  border-radius: 0px !important;
+  border-width: 1px;
+}
+
+.btn:hover{
+  background-color: orange !important;
+  border-radius: 0px !important;
+}
+
+.p-aboutus{
+  margin: 10px;
+}
+
+.main{
+  height: 700px;
+}
