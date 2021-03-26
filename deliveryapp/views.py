@@ -29,3 +29,11 @@ def aboutus(request):
                 "TRY": round(response3['rates']['HUF'],4),
                }
     return(render(request,'aboutus.html', context = {'response':response}))
+
+
+def signin_user(request):
+    return render(request,'signinuser.html')
+
+
+def signup_user(request):
+    return render(request,'signupuser.html')

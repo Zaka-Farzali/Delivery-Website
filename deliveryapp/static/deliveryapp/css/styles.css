@@ -270,7 +270,13 @@ textarea {
 .btn:hover{
   background-color: orange !important;
   border-radius: 0px !important;
+  color: white;
 }
+
+.btn:active{
+  border-color: black;
+}
+
 
 .p-aboutus{
   margin: 10px;
@@ -278,4 +284,46 @@ textarea {
 
 .main{
   height: 700px;
+}
+
+.page-section .page-section-heading {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 992px) {
+  .page-section .page-section-heading {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-secondary {
+  color: #2c3e50 !important;
+}
+
+.signin-container{
+  margin-top: 50px;
+}
+
+.link{
+  color: blue;
+}
+
+.link:hover{
+  color: blue;
+}
+
+.glyphicon-calendar
+{
+    font-size: 15pt;
+}
+.input-group
+{
+    width: 180px;
+    margin-top:30px;
 }
