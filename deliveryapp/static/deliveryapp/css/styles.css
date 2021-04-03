@@ -307,7 +307,7 @@ textarea {
 }
 
 .signin-container{
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .link{
@@ -322,8 +322,49 @@ textarea {
 {
     font-size: 15pt;
 }
+
 .input-group
 {
     width: 180px;
     margin-top:30px;
+}
+
+.password1{
+  float: left;
+}
+.password2{
+  float: right;
+}
+
+.orderinput{
+  width: 400px;
+}
+
+.link{
+  margin-left: 55px;
+}
+
+.color{
+  margin-left: 46px; 
+}
+
+.size{
+  margin-left: 56px;
+}
+
+.amount{
+  margin-left: 27px;
+  width: 70px;
+}
+
+.order-container{
+  margin-top: 50px;
+}
+
+.order-h1{
+  margin-top: 20px;
+}
+
+.ordertextfield{
+  width : 488px;
 }

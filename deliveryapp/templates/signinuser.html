@@ -3,35 +3,28 @@
 {% load static %}
 
 {% block content %}
-
 <div  class="right-content">
     <div class="signin-container">
-        <!-- Contact Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Sign in</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Contact Section Form-->
+        <div class="alert alert-warning" role="alert" style="text-align: center;">
+           {{error}}
+          </div>
         <div  class="row">
             <div class="col-lg-8 mx-auto">
-                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
                 <form id="contactForm" name="sentMessage" novalidate="novalidate" method="post">
                     {% csrf_token %}
- 
+                    <h1>{{password}}</h1>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Email</label>
-                            <input class="form-control" name="phone" id="phone" type="tel" placeholder="Email" required="required" data-validation-required-message="Please enter your phone number." />
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Email"/>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Password</label>
-                            <input class="form-control" name="phone" id="phone" type="tel" placeholder="Password" required="required" data-validation-required-message="Please enter your phone number." />
+                            <input class="form-control" name="password" id="password" type="password" placeholder="Password"/>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

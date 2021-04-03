@@ -20,6 +20,9 @@
           </p>
     </div>
     <div class="container-fluid navigate">
+      <!-- {% if user.is_authenticated %}
+      <p>Logged in as {{user.surname}}</p>
+      {%endif%} -->
       <ul class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link" href="#">Partners</a>
@@ -33,9 +36,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/aboutus">About Us</a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="/signout">Sign out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My profile</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" href="/signin">Sign In</a>
         </li>
+        {% endif %}
       </ul>
     </div>
     <div class="main">
@@ -45,7 +57,11 @@
                 <div class="exchange-left">1 USD</div>  <div class="exchange-right">{{response.USD}} HUF</div>
             </div>
             <button type="button" class="btn btn-outline-secondary btn-calculator">Calculator</button>
-        </div>
+            {% if user.is_authenticated %}
+            <button type="button" class="btn btn-outline-secondary btn-calculator">Order</button>
+            <button type="button" class="btn btn-outline-secondary btn-calculator">Products in Storage</button>
+            {% endif %}
+          </div>
         {% block content %}
 
 

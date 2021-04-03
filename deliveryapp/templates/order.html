@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div  class="right-content">
+    <div class="signin-container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 order-h1">Order</h2>
+        <div  class="row order-container">
+            <div class="col-lg-8 mx-auto">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                <form id="contactForm" name="sentMessage" novalidate="novalidate" method="post">
+                    {% csrf_token %}
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Link</label>
+                            <label><input class="form-control link orderinput" name="link" id="link" type="url" placeholder="Link" /></label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Color</label>
+                            <label><input class="form-control color orderinput" name="color" id="color" type="text" placeholder="Color" /></label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Size</label>
+                            <label><input class="form-control size orderinput" name="size" id="size" type="text" placeholder="Size" /></label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Amount</label>
+                            <label><input class="form-control amount orderinput" name="amount" id="amount" type="number" /></label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group">
+                            <label">Other information you want us to know</label>
+                            <textarea class="form-control ordertextfield" id="exampleFormControlTextarea1" rows="3" name="other"></textarea>
+                          </div>
+                    </div>
+                    <br />
+                    <div class="form-group order-button">
+                        <button style="background-color: orange;" class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
