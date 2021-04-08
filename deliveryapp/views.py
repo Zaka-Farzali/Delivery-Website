@@ -1,5 +1,6 @@
 from typing import OrderedDict
 from django.http import response
+from django.db import IntegrityError
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user, login, logout, authenticate
 from django.contrib.auth.hashers import make_password
@@ -40,9 +41,33 @@ def signup_user(request):
     if request.method == 'GET':
         return render(request,'signupuser.html' , context = {'response':response})
     if request.method == 'POST':
-        user = Customer.objects.create_user(request.POST['email'], request.POST['name'], request.POST['surname'], request.POST['phone'], request.POST['address'], request.POST['birthday'], password = request.POST['password1'])
-        login(request,user)
-        return redirect(home)                                                       
+        try:
+            email = request.POST['email']
+            name = request.POST['name']
+            if name == "":
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Please enter your name'})
+            surname = request.POST['surname']
+            if surname == "":
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Please enter your surname'})
+            phone = request.POST['phone']
+            if phone == "":
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Please enter your phone number'})
+            address = request.POST['address']
+            if address == "":
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Please enter your address'})
+            birthday = request.POST['birthday']
+            if birthday == "":
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Please enter your birthday'})
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
+            if password1 != password2:
+                return render(request,'signupuser.html' , context = {'response':response, 'error': 'Passswords do not match. Please try again'})
+            user = Customer.objects.create_user(email, name, surname, phone, address, birthday, password = password1)
+            login(request,user)
+            return redirect(home)
+        except IntegrityError:
+            return render(request,'signupuser.html' , context = {'response':response, 'error': 'User with this email already exists'})
+
 
 def signin_user(request):
     response = currencies();
@@ -69,16 +94,40 @@ def order(request):
     if request.method == 'GET':
         return render(request, 'order.html', context = {'response':response})
     if request.method == 'POST':
-        link = request.POST['link']
+        url = request.POST['link']
+        if url == "":
+            return render(request, 'order.html', context={'error': 'Please input the url of the product'})
         color = request.POST['color']
         size = request.POST['size']
+        if size == "":
+            return render(request, 'order.html', context={'error': 'Please input the size of the product'})
         amount = request.POST['amount']
         other = request.POST['other']
+        customer = Order.objects.create(url=url, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
+        return redirect(products)
 
-        customer = Order.objects.create(url=link, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
-        return render(request, 'order.html', context = {'response':response})
+# def order_check(request):
 
 def products(request):
-    orderdict = Order.objects.get(customer = get_user(request))
+    try:
+        response = currencies()
+        orderdict = Order.objects.filter(customer = get_user(request))
+        return render(request, 'products.html', context={'response' : response, 'orderdict' : orderdict})
+    except TypeError:
+        return render(request, 'products.html', context={'response' : response})
+        
+
+def profile(request):
+    if request.method == 'POST':
+            u = Customer.objects.get(email = get_user(request))
+            u.delete()
+            return render(request, 'profile.html',context={'message':'Account is succesfully deleted'})
+    else:
+        user = Customer.objects.get(email = get_user(request))
+        return render(request, 'profile.html',context={'user':user})
+
+def deleteaccount(request):
+    u = Customer.objects.get(email = get_user(request))
+    u.delete()
+    return render(request, 'profile.html',context={'message':'Account is succesfully deleted'})
     
-    return render(request, 'products.html', context={'orderdict' : orderdict})

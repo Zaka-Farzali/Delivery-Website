@@ -82,7 +82,7 @@ class Order(models.Model):
     status  = models.CharField(max_length=2, choices=STATUS_CHOICES,default='PR', editable=True)
     orderDate = models.DateTimeField(default=timezone.now, editable=False)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-
+    
     def __str__(self):
         return self.url 
 

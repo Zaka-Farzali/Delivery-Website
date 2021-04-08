@@ -38,7 +38,7 @@
 }
 
 html {
-  min-width: 1000px;
+
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -50,14 +50,16 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  margin: 0;
+  max-height: 1000px;
+  max-width: 2000px;
+  margin: 1rem;
   font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #563d7c;
   text-align: left;
-  background-color: #DCE1E3;
+  background-color: white;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -174,7 +176,6 @@ textarea {
 .topdiv{
   width: 100%;
   height: 150px;
-  background-color: #eff8ff;
 }
 
 .top {
@@ -182,8 +183,8 @@ textarea {
   padding-top: 30px;
   font-size: 50px;
   font-weight: bold;
-  font-style: italic;
-  color: #111d5e;
+
+  color: #563d7c;
 }
 
 .container-fluid {
@@ -202,9 +203,13 @@ textarea {
   color: white;
 }
 
+.nav-link:hover{
+  color: #563d7c;
+}
+
 .exchange {
   position: relative;
-  background-color: white;
+  background-color: #eff8ff;
   width: 100%;
   height: 100px;
 }
@@ -217,7 +222,7 @@ textarea {
   display: block;
   width: 80%;
   float: right;
-  height: 700px;
+  height: 800px;
 }
 
 .options {
@@ -225,13 +230,13 @@ textarea {
   float: left;
   padding: 0;
   width: 20%;
-  height: 700px;
+  height: 800px;
   background-color: #eff8ff;
 }
 
 .carousel-item {
   background-color: black;
-  height: 700px;
+  height: 800px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -249,7 +254,7 @@ textarea {
   object-fit:cover;
   top: 0;
   left: 0;
-  min-height: 700px;
+  min-height: 800px;
 }
 
 .footer{
@@ -263,13 +268,13 @@ textarea {
   border-color: black;
   color: white;
   background-color: orange !important;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
   border-width: 1px;
 }
 
 .btn:hover{
   background-color: orange !important;
-  border-radius: 0px !important;
+  border-radius: 5px !important;
   color: white;
 }
 
@@ -283,7 +288,7 @@ textarea {
 }
 
 .main{
-  height: 700px;
+  height: 800px;
 }
 
 .page-section .page-section-heading {
@@ -359,6 +364,7 @@ textarea {
 
 .order-container{
   margin-top: 50px;
+
 }
 
 .order-h1{
@@ -367,4 +373,65 @@ textarea {
 
 .ordertextfield{
   width : 488px;
+}
+
+.vertical-div{
+  width: 100%;
+  height: 40px;
+  background-color: orange;
+  
+}
+
+.main-body {
+  width: 50;
+  padding: 15px;
+}
+
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  max-width: 800px;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: orange;
+  flex: 1 1 auto;
+  min-height: 1px;
+  margin: 1rem;
+  padding: 3rem;
+}
+
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.col{
+  color: #563d7c;
+}
+
+.deleteaccount{
+  display: none;
+  text-align: center;
 }

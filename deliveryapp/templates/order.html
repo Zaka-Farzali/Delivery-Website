@@ -3,47 +3,51 @@
 {% load static %}
 
 {% block content %}
-
 <div  class="right-content">
+    {% if user.is_authenticated %}
     <div class="signin-container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 order-h1">Order</h2>
+        <h2 class="page-section-heading text-center mb-0 order-h1">Order</h2>
+        {% if error %}
+        <div class="alert alert-warning" role="alert" style="text-align: center;">
+           {{error}}
+          </div>
+        {% endif %}
         <div  class="row order-container">
             <div class="col-lg-8 mx-auto">
-                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form id="contactForm" name="sentMessage" novalidate="novalidate" method="post">
+                <form id="orderform" name="orderform" novalidate="novalidate" method="post">
                     {% csrf_token %}
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Link</label>
-                            <label><input class="form-control link orderinput" name="link" id="link" type="url" placeholder="Link" /></label>
+                            <label class="bold">Link</label>
+                            <input class="form-control " name="link" id="link" type="url" placeholder="Link" />
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Color</label>
-                            <label><input class="form-control color orderinput" name="color" id="color" type="text" placeholder="Color" /></label>
+                            <label  class="bold">Color</label>
+                            <input class="form-control " name="color" id="color" type="text" placeholder="Color" />
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Size</label>
-                            <label><input class="form-control size orderinput" name="size" id="size" type="text" placeholder="Size" /></label>
+                            <label  class="bold">Size</label>
+                            <input class="form-control " name="size" id="size" type="text" placeholder="Size" />
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Amount</label>
-                            <label><input class="form-control amount orderinput" name="amount" id="amount" type="number" /></label>
+                            <label  class="bold">Amount</label>
+                            <input class="form-control amount orderinput" name="amount" id="amount" type="number" value="1"/>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group">
-                            <label">Other information you want us to know</label>
-                            <textarea class="form-control ordertextfield" id="exampleFormControlTextarea1" rows="3" name="other"></textarea>
+                            <label"  class="bold">Other information you want us to know</label>
+                            <textarea class="form-control " id="exampleFormControlTextarea1" rows="3" name="other"></textarea>
                           </div>
                     </div>
                     <br />
@@ -54,6 +58,10 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert" style="text-align: center;">
+        <p>Please sing in first to order a product</p>
+   </div>
+   {% endif %}
 </div>
-
 {% endblock %}
