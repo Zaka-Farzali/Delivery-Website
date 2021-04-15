@@ -122,4 +122,4 @@ AUTH_USER_MODEL = 'deliveryapp.Customer'
 
 django_heroku.settings(locals())
 
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

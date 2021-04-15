@@ -50,6 +50,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
+  min-height: 1000px;
+  min-width: 2000px;
   max-height: 1000px;
   max-width: 2000px;
   margin: 1rem;
@@ -434,4 +436,28 @@ textarea {
 .deleteaccount{
   display: none;
   text-align: center;
+}
+
+.container-img{
+  text-align: center;
+  height: 300px;
+}
+
+.img-wrapper{
+  display: inline-block;
+  margin-top: 150px;
+}
+
+.aboutus-img-container{
+  text-align: justify;
+  float: left;
+  width: 200px;
+  height: auto;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.aboutus-img{
+  width: 200px;
+  height: 60%;
 }
