@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div  class="right-content">
+   <div class="container calculator" >
+      <form method="POST">
+         {% csrf_token %}
+      <div style="display: inline-block;">
+         <label for="country" style="margin-top: 20px;">country(from)</label>     
+         <select id="country" name="country" class="form-control">
+         <option value="Afghanistan">United States</option>
+         <option value="Åland Islands">England</option>
+         <option value="Albania">Germany</option>
+         <option value="Algeria">Turkey</option>
+         </select>
+         <h5 style="margin-top: 20px;">Parameters of the package</h5>
+         <div style="margin-top: 20px;">
+            <div style="float: left;">
+               <label for="weight" style="margin-top: 20px;">weight(kg)</label>
+               <input type="number" name="weight" id="weight" class="form-control" placeholder="weight" >
+            </div>
+            <div style="float: right;">
+               <label for="length" style="margin-top: 20px;">length(sm)</label>
+               <input type="number" name="length" id="length" class="form-control"  placeholder="length">
+            </div>
+         </div>
+         <div style="margin-top: 20px;">
+            <div style="float: left;">
+               <label for="width" style="margin-top: 20px;">width(kg)</label>
+               <input type="number" name="width" id="width" class="form-control" placeholder="width" >
+            </div>
+            <div style="float: right;">
+               <label for="height" style="margin-top: 20px;">height(sm)</label>
+               <input type="number" name="height" id="height" class="form-control"  placeholder="height">
+            </div>
+         </div>
+      </div>
+      <div class="form-group" style="display:inline-block; margin-top: 20px;">
+         <button style="background-color: red !important;" class="btn btn-primary btn-xl" id="calculate" type="submit">Calculate</button>
+     </div>
+      </form>
+      
+      {% if price %}
+         <h4>The price of shipping is </h4>
+         {{price}}$
+      {% endif %}
+   </div>
+</div>
+
+{% endblock %}

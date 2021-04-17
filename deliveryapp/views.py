@@ -131,3 +131,16 @@ def deleteaccount(request):
     u.delete()
     return render(request, 'profile.html',context={'message':'Account is succesfully deleted'})
     
+def calculator(request):
+    if request.method == 'GET':
+        return render(request,'calculator.html')
+    if request.method == 'POST':
+        weight = request.POST['weight']
+        length = request.POST['length']
+        width = request.POST['width']
+        height = request.POST['height']
+        tmp = float(length+width+height)
+        print(tmp)
+        price = 6.99 + float(weight)*1.5 + (float(length)+float(width)+float(height))*0.2
+        price = round(price,2)
+        return render(request,'calculator.html', context={'price':price})
