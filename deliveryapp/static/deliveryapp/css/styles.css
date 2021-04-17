@@ -50,8 +50,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  min-height: 100%;
-  min-width: 100%;
+  min-height: 1000px;
+  min-width: 1000px;
   width: 100%;
   height: 100%;
   margin: 1rem;
@@ -343,9 +343,7 @@ textarea {
   float: right;
 }
 
-.orderinput{
-  width: 400px;
-}
+
 
 .link{
   margin-left: 55px;
@@ -360,7 +358,6 @@ textarea {
 }
 
 .amount{
-  margin-left: 27px;
   width: 70px;
 }
 
@@ -369,9 +366,7 @@ textarea {
 
 }
 
-.order-h1{
-  margin-top: 20px;
-}
+
 
 .ordertextfield{
   width : 488px;

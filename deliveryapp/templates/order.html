@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -6,13 +7,13 @@
 <div  class="right-content">
     {% if user.is_authenticated %}
     <div class="signin-container">
-        <h2 class="page-section-heading text-center mb-0 order-h1">Order</h2>
         {% if error %}
         <div class="alert alert-warning" role="alert" style="text-align: center;">
            {{error}}
           </div>
         {% endif %}
-        <div  class="row order-container">
+        <div  class="container row order-container">
+            <h2 class="page-section-heading text-center mb-0">Order</h2>
             <div class="col-lg-8 mx-auto">
                 <form id="orderform" name="orderform" novalidate="novalidate" method="post">
                     {% csrf_token %}
@@ -37,14 +38,23 @@
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label  class="bold">Amount</label>
-                            <input class="form-control amount orderinput" name="amount" id="amount" type="number" value="1"/>
-                            <p class="help-block text-danger"></p>
+                    <div>
+                        <div class="control-group" style="float:left">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label  class="bold">Amount</label>
+                                <input class="form-control amount" name="amount" id="amount" type="number" value="1"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group"  style="float:right">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label  class="bold">Price of a product(USD)</label>
+                                <input class="form-control price" name="price" id="price" type="number" value="0.00"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group" style="margin-top: 100px;">
                         <div class="form-group">
                             <label  class="bold">Other information you want us to know</label>
                             <textarea class="form-control " id="exampleFormControlTextarea1" rows="3" name="other"></textarea>
@@ -52,7 +62,7 @@
                     </div>
                     <br />
                     <div class="form-group order-button">
-                        <button style="background-color: orange;" class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Order</button>
+                        <button style="background-color: orange;" class="btn btn-primary btn-xl" id="orderButton" type="submit">Order</button>
                     </div>
                 </form>
             </div>
@@ -63,5 +73,9 @@
         <p>Please sing in first to order a product</p>
    </div>
    {% endif %}
+   
 </div>
+
+
+
 {% endblock %}

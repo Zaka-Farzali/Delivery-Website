@@ -102,9 +102,14 @@ def order(request):
         if size == "":
             return render(request, 'order.html', context={'error': 'Please input the size of the product'})
         amount = request.POST['amount']
+        if amount <=0 or isinstance(amount,float):
+            return render(request, 'order.html', context={'error': 'Please input the correct amount'})
+        price = request.POST['price']
+        if price <=0:
+             return render(request, 'order.html', context={'error': 'Please input the correct amount'}) 
         other = request.POST['other']
-        customer = Order.objects.create(url=url, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
-        return redirect(products)
+        # customer = Order.objects.create(url=url, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
+        return redirect(checkout)
 
 # def order_check(request):
 
@@ -144,3 +149,6 @@ def calculator(request):
         price = 6.99 + float(weight)*1.5 + (float(length)+float(width)+float(height))*0.2
         price = round(price,2)
         return render(request,'calculator.html', context={'price':price})
+
+def checkout(request):
+    return render(request, 'checkout.html')
