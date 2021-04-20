@@ -1,3 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div  class="right-content" style="text-align: center;">
+    <div class="container checkout-container" >
+        <h6>Your product : {{order.url}}</h6>
+        <h6>Size : {{order.size}}</h6>
+        <h6>Color : {{order.color}}</h6>
+        <h6>Amount : {{order.amount}}</h6>
+        <h6>Other information : {{order.other}}</h6>
+        <h6>Do you want to proceed to checkout?</h6>
+        <button style="background-color: red !important; margin-top: 50px; float: left;" class="btn btn-primary btn-xl" id="checkoutbutton" type="button" data-toggle="modal" data-target="#exampleModal">Checkout</button>
+        <button style="background-color: red !important; margin-top: 50px; float: right;" class="btn btn-primary btn-xl" id="backtoorderbutton" type="button">Go back to order</button>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -10,10 +29,10 @@
         </div>
         <div class="modal-body" style="text-align: center;">
             <div id="paypal-button-container" style="width: 50%; display: inline-block; margin-top: 30px;"></div>
-            <script src="https://www.paypal.com/sdk/js?client-id=AcOf5Sd2dUFc4yjWPXBy6LXV8mWpGiMQG_InllDKzKArF_JQo1icRnvAhZLN0jJiF5SVM7E3U41zrd5O&currency=USD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=AalbmKsKP9fwmlaDX44RM7LJ1M_0CcUo20Co_DtulLAnodMsR-rmjonLgzIKSb7BgR2y0PVMP0Dd22pV&currency=USD"></script>
         
             <script>
-                var price = parseFloat(document.getElementById("price").value)
+                // var price = parseFloat(document.getElementById("price").value)
                 // Render the PayPal button into #paypal-button-container
                 paypal.Buttons({
         
@@ -22,7 +41,7 @@
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: price
+                                    value: '{{order.price}}'
                                 }
                             }]
                         });
@@ -48,14 +67,4 @@
       </div>
     </div>
   </div>
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
-
-<div  class="right-content" style="text-align: center;">
-    <button style="background-color: red;" class="btn btn-primary btn-xl" id="checkoutbutton" type="button" data-toggle="modal" data-target="#exampleModal">Checkout</button>
-</div>
-
 {% endblock %}

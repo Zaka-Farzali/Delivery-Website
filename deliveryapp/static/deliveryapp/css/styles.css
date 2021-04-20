@@ -275,7 +275,7 @@ textarea {
 }
 
 .btn:hover{
-  background-color: orange !important;
+  background-color: red !important;
   border-radius: 5px !important;
   color: white;
 }
@@ -468,4 +468,16 @@ textarea {
   border-width: 10px;
   box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
   margin-top: 100px;
+}
+
+.checkout-container{
+  display: inline-block; 
+  text-align: left; 
+  margin-top: 100px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 10px;
+  border-width: 10px;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
+  ;
 }
