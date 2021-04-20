@@ -4,17 +4,19 @@
 
 {% block content %}
 
-<div  class="right-content">
+<div  class=" right-content">
     {% if user.is_authenticated %}
-    <table class="table table-warning">
+    <div class="container products-container">
+    <table class="table table-light">
         <thead class="thead-light">
           <tr>
-            <th class="col" scope="col">Order N</th>
-            <th class="col" scope="col">Link to the product</th>
-            <th class="col" scope="col">Color</th>
-            <th class="col" scope="col">Size</th>
-            <th class="col" scope="col">Amount</th>
-            <th class="col" scope="col">Status</th>
+            <th class="col" scope="col" style="width:15%;">Order</th>
+            <th class="col" scope="col" style="width:15%;">Link to the product</th>
+            <th class="col" scope="col" style="width:15%;">Color</th>
+            <th class="col" scope="col" style="width:15%;">Size</th>
+            <th class="col" scope="col" style="width:15%;">Amount</th>
+            <th class="col" scope="col" style="width:10%;">Price</th>
+            <th class="col" scope="col" style="width:15%;">Status</th>
           </tr>
         </thead>
         <br>
@@ -26,6 +28,7 @@
             <td class="bold" >{{order.color}}</td>
             <td class="bold">{{order.size}}</td>
             <td class="bold" >{{order.amount}}</td>
+            <td class="bold" >{{order.price}}$</td>
             <td class="bold" >{{order.get_status_display}}</td>
           </tr>
         {% endfor %}
@@ -36,7 +39,7 @@
         <p>Please sing in first to order a product</p>
     </div>
     {% endif %}
-
+    </div>
 </div>
 
 {% endblock %}

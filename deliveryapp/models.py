@@ -78,6 +78,7 @@ class Order(models.Model):
     color = models.CharField(max_length=32, blank=True, null=True)
     size = models.CharField(max_length=16)
     amount = models.IntegerField()
+    price = models.FloatField()
     otherInfo = models.TextField(max_length=256)
     status  = models.CharField(max_length=2, choices=STATUS_CHOICES,default='PR', editable=True)
     orderDate = models.DateTimeField(default=timezone.now, editable=False)

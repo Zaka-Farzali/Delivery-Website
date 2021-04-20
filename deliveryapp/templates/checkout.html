@@ -11,6 +11,7 @@
         <h6>Size : {{order.size}}</h6>
         <h6>Color : {{order.color}}</h6>
         <h6>Amount : {{order.amount}}</h6>
+        <h6>Total price : {{order.price}} (+10% added)</h6>
         <h6>Other information : {{order.other}}</h6>
         <h6>Do you want to proceed to checkout?</h6>
         <button style="background-color: red !important; margin-top: 50px; float: left;" class="btn btn-primary btn-xl" id="checkoutbutton" type="button" data-toggle="modal" data-target="#exampleModal">Checkout</button>
@@ -34,8 +35,44 @@
             <script>
                 // var price = parseFloat(document.getElementById("price").value)
                 // Render the PayPal button into #paypal-button-container
+                function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        const cookies = document.cookie.split(';');
+                        for (let i = 0; i < cookies.length; i++) {
+                            const cookie = cookies[i].trim();
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }   
+                const csrftoken = getCookie('csrftoken');
+                
+                function completeOrder(){
+                    var url = "{% url 'complete' %}"
+                    var product = '{{order.url}}'
+                    fetch(url, {
+                        method: 'POST',
+                        headers:{
+                            'Content-type':'applicataion/json',
+                            'X-CSRFToken':csrftoken,
+                        },
+                        body: JSON.stringify({
+                            'url' : '{{order.url}}',
+                            'size' : '{{order.size}}',
+                            'color' : '{{order.color}}',
+                            'amount' : '{{order.amount}}',
+                            'price' : '{{order.price}}',
+                            'other' : '{{order.other}}',
+                        })
+                    })
+                }
+                
                 paypal.Buttons({
-        
                     // Set up the transaction
                     createOrder: function(data, actions) {
                         return actions.order.create({
@@ -50,7 +87,7 @@
                     // Finalize the transaction
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
-                            // Show a success message to the buyer
+                            completeOrder()
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
                         });
                     },

@@ -16,5 +16,6 @@ urlpatterns = [
     path('deleteaccount/', views.deleteaccount, name='deleteaccount'),
     path('calculator/',views.calculator, name='calculator'),
     path('checkout/',views.checkout, name='checkout'),
+    path('complete/',views.complete, name='complete'),
 
 ]

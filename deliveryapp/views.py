@@ -1,11 +1,12 @@
 from typing import OrderedDict
-from django.http import response
+from django.http import response, JsonResponse
 from django.db import IntegrityError
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user, login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from .models import Customer ,Order
-import requests
+import requests, json
+
 # Create your views here.
 def currencies():
     response1 = requests.get('https://free.currconv.com/api/v7/convert?q=EUR_HUF&compact=ultra&apiKey=8dcdf450f8ec388d7100')
@@ -113,7 +114,7 @@ def order(request):
             'color':color,
             'size':size,
             'amount':amount,
-            'price':amount*price,
+            'price':(0.1*amount*price) + (amount*price),
             'other':other,
             }
         # customer = Order.objects.create(url=url, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
@@ -160,3 +161,8 @@ def calculator(request):
 
 def checkout(request):
     return render(request, 'checkout.html')
+
+def complete(request):
+    order = json.loads(request.body)
+    Order.objects.create(url=order['url'], color= order['color'], size = order['size'], amount = order['amount'], price = order['price'],otherInfo = order['other'], customer = get_user(request))
+    return JsonResponse('Payment completed!', safe = False)
