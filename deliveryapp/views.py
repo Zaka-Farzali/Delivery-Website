@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user, login, logout, authenticate
 from django.contrib.auth.hashers import make_password
-from .models import Customer ,Order
+from .models import Customer ,Order, Partner
 import requests, json
 
 # Create your views here.
@@ -166,3 +166,7 @@ def complete(request):
     order = json.loads(request.body)
     Order.objects.create(url=order['url'], color= order['color'], size = order['size'], amount = order['amount'], price = order['price'],otherInfo = order['other'], customer = get_user(request))
     return JsonResponse('Payment completed!', safe = False)
+
+def partners(request):
+    partners = Partner.objects.all()
+    return render(request,'partners.html', context={'partners':partners})

@@ -60,9 +60,7 @@ class Partner(models.Model):
     name = models.CharField(max_length=64)
     logo = models.ImageField()
     url = models.URLField()
-    description = models.TextField(max_length=256)
     date = models.DateTimeField(default=timezone.now, editable=False)
-
     def __str__(self):
         return self.name
 
