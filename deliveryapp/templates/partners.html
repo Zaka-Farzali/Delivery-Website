@@ -5,20 +5,21 @@
 {% block content %}
 
 <div  class="right-content">
-    <div style="margin:5rem;">
-        <div style="text-align:center; margin-bottom: 1rem;">
+    <div style="text-align: center; margin:5rem;">
+        <div style="display: inline-block; margin-bottom: 1rem;">
             <h4>Click any of the links below and order any product you want!</h4>
         </div>
-        {% for partner in partners %}
-         <div style="display: inline-block; margin:1rem;">
-             <div style="width:200px; height: 100px; ">
-                <a href="{{partner.url}}">
-                    <img style="width:200px; height: 100px;" src="{{partner.logo.url}}">
-                </a>
-             </div>
-
-         </div>
-        {% endfor %}
+        <div>
+            {% for partner in partners %}
+            <div style="display: inline-block; margin:1rem;">
+                <div style="width:200px; height: 150px; ">
+                    <a href="{{partner.url}}">
+                        <img style="width:100%; height: 100%;" src="{{partner.logo.url}}">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
