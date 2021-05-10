@@ -7,40 +7,21 @@ from django.contrib.auth.hashers import make_password
 from .models import Customer ,Order, Partner
 import requests, json
 
-# Create your views here.
-def currencies():
-    response1 = requests.get('https://free.currconv.com/api/v7/convert?q=EUR_HUF&compact=ultra&apiKey=8dcdf450f8ec388d7100')
-    response2= requests.get('https://free.currconv.com/api/v7/convert?q=USD_HUF&compact=ultra&apiKey=8dcdf450f8ec388d7100')
-    response3 = requests.get('https://free.currconv.com/api/v7/convert?q=TRY_HUF&compact=ultra&apiKey=8dcdf450f8ec388d7100')
-    response1 = response1.json()
-    # print(response1)
-    response2 = response2.json()
-    response3 = response3.json()
-    response = {} 
-    # {"EUR": round(response1['EUR_HUF'],2),
-    #             "USD": round(response2['USD_HUF'],2),
-    #             "TRY": round(response3['TRY_HUF'],2),
-    #            }
-    return response
-
 
 
 def home(request):
-    response = currencies();
-    return render(request,'home.html', context = {'response':response})
+    return render(request,'home.html', )
 
 def aboutus(request):
-    response = currencies();
-    return render(request,'aboutus.html', context = {'response':response})
+    return render(request,'aboutus.html')
 
 def signout_user(request):
     logout(request)
     return redirect(home)
 
 def signup_user(request):
-    response = currencies();
     if request.method == 'GET':
-        return render(request,'signupuser.html' , context = {'response':response})
+        return render(request,'signupuser.html')
     if request.method == 'POST':
         try:
             email = request.POST['email']
@@ -71,9 +52,8 @@ def signup_user(request):
 
 
 def signin_user(request):
-    response = currencies();
     if request.method == 'GET':
-        return render(request,'signinuser.html', context = {'response':response})
+        return render(request,'signinuser.html')
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -91,9 +71,8 @@ def signin_user(request):
         return redirect(home)
 
 def order(request):
-    response = currencies()
     if request.method == 'GET':
-        return render(request, 'order.html', context = {'response':response})
+        return render(request, 'order.html')
     if request.method == 'POST':
         url = request.POST['link']
         if url == "":
@@ -114,7 +93,7 @@ def order(request):
             'color':color,
             'size':size,
             'amount':amount,
-            'price':(0.1*amount*price) + (amount*price),
+            'price':round((0.1*amount*price),2) + (amount*price),
             'other':other,
             }
         # customer = Order.objects.create(url=url, color= color, size = size, amount = amount, otherInfo = other, customer = get_user(request))
@@ -124,18 +103,17 @@ def order(request):
 
 def products(request):
     try:
-        response = currencies()
         orderdict = Order.objects.filter(customer = get_user(request))
-        return render(request, 'products.html', context={'response' : response, 'orderdict' : orderdict})
+        return render(request, 'products.html', context={ 'orderdict' : orderdict})
     except TypeError:
-        return render(request, 'products.html', context={'response' : response})
+        return render(request, 'products.html')
         
 
 def profile(request):
     if request.method == 'POST':
             u = Customer.objects.get(email = get_user(request))
             u.delete()
-            return render(request, 'profile.html',context={'message':'Account is succesfully deleted'})
+            return redirect(home)
     else:
         user = Customer.objects.get(email = get_user(request))
         return render(request, 'profile.html',context={'user':user})

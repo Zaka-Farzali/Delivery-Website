@@ -68,8 +68,11 @@
       <div class="form-group">
         <div id ="deleteaccount" class="deleteaccount alert alert-warning" role="alert">
           You will not be able to restore your account and all orders in progress will be lost. Are you sure?
-            <button style=" margin: 1rem; display: inline;" class="btn btn-primary btn-xl" id="deleteaccountbutton" type="button" href="url:deleteaccount">Yes</button>
-            <button style=" margin: 1rem; display: inline;" class="btn btn-primary btn-xl" id="closedivbutton" onclick="closeDiv()">No</button>
+          <form method="POST">
+            {% csrf_token %}
+            <button style=" margin: 1rem; display: inline;" class="btn btn-primary btn-xl" id="deleteaccountbutton" type="submit">Yes</button>
+            <button style=" margin: 1rem; display: inline;" class="btn btn-primary btn-xl" id="closedivbutton" type="button" onclick="closeDiv()">No</button>
+          </form>
         </div>
         <button style=" margin: 1rem;" class="btn btn-primary btn-xl" id="sendMessageButton" onclick="showDiv()">Delete Account</button>
       </div>

@@ -41,7 +41,7 @@
           <a class="nav-link" href="/partners">Partners</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Special Offers</a>
+          <a class="nav-link" href="/home">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">FAQ</a>
@@ -65,12 +65,8 @@
     </div>
     <div class="main">
         <div class="container options">
-            <div class="container exchange">
-                <h6 align="center" class="h6-exhange">Exchange rates</h6>
-                <div class="exchange-left">1 USD</div>  <div class="exchange-right">{{response.USD}} HUF</div>
-            </div>
+          <div style="margin-top: 4rem;">
             <ul class="nav flex-column">
-              {% if user.is_authenticated %}
               <li class="nav-item">
                 <div class="vertical-div">
                 <a class="nav-link " href="/order">Order</a>
@@ -81,13 +77,13 @@
                 <a class="nav-link" href="/products">Products in Storage</a>
                 </div>
               </li>
-              {% endif %}
               <li class="nav-item">
                 <div class="vertical-div">
                 <a class="nav-link" href="/calculator">Calculator</a>
                 </div>
               </li>
             </ul>
+          </div>
             <!-- <button type="button" class="btn btn-outline-secondary btn-calculator">Calculator</button>
             {% if user.is_authenticated %}
             <button type="button" class="btn btn-outline-secondary btn-calculator" >Order</button>
