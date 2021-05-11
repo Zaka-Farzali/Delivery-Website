@@ -237,13 +237,12 @@ textarea {
 }
 
 .carousel-item {
-  background-color: black;
   height: 800px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; 
 }
 
 .btn{
